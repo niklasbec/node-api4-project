@@ -9,17 +9,24 @@ function App() {
   useEffect(() => {
     axios.get('/api/posts')
       .then(response => {
-        console.log(response);
+        setData(response.data)
       })
       .catch(error => {
-        console.log(error)
       })
     })
 
   return (
     <div className="App">
       <header className="App-header">
-        {}
+        {data.map(curr => {
+          return (
+            <div key={curr.id}>
+            <p>curr.title</p>
+            <p>curr.contents</p>
+            </div>
+          )
+          
+        })}
       </header>
     </div>
   );
