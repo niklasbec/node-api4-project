@@ -4,7 +4,7 @@ import axios from 'axios'
 
 function App() {
 
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
 
   useEffect(() => {
     axios.get('/api/posts')
@@ -13,19 +13,18 @@ function App() {
       })
       .catch(error => {
       })
-    })
+    }, [])
 
   return (
     <div className="App">
       <header className="App-header">
         {data.map(curr => {
-          return (
-            <div key={curr.id}>
-            <p>curr.title</p>
-            <p>curr.contents</p>
+          return(
+            <div>
+            <p>{curr.id}</p>
+            <p>{curr.title}</p>
             </div>
           )
-          
         })}
       </header>
     </div>
